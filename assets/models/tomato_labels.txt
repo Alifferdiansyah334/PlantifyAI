@@ -1,0 +1,6 @@
+Bacterial_spot
+Early_blight
+Healthy
+Late_blight
+Septoria_leaf_spot
+Yellow_Leaf_Curl_Virus
