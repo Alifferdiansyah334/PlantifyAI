@@ -1,43 +1,90 @@
-# Plantify AI
+<div align="center">
+  <img src="assets/images/logo.png" alt="Plantify AI Logo" width="140" />
+  <h1>Plantify AI</h1>
+  <p><strong>Flutter-based plant disease detection app for tomato and rice crops.</strong></p>
+  <p>On-device AI diagnosis, treatment guidance, article library, PDF reports, and bilingual support.</p>
 
-Plantify AI is a Flutter mobile app for plant disease detection, focused on tomato and rice crops. The app combines on-device TensorFlow Lite classification with a guided camera flow, disease information, treatment recommendations, article content, and downloadable reports.
+  <p>
+    <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white" alt="Flutter" />
+    <img src="https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white" alt="Dart" />
+    <img src="https://img.shields.io/badge/TensorFlow%20Lite-On--Device%20Inference-FF6F00?logo=tensorflow&logoColor=white" alt="TensorFlow Lite" />
+    <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Desktop-2E7D32" alt="Platforms" />
+  </p>
 
-## Highlights
+  <p>
+    <img src="https://img.shields.io/badge/State%20Management-Provider-5C6BC0" alt="Provider" />
+    <img src="https://img.shields.io/badge/Camera-Capture%20%26%20Gallery-6D4C41" alt="Camera" />
+    <img src="https://img.shields.io/badge/Reports-PDF%20Export-D32F2F" alt="PDF Export" />
+    <img src="https://img.shields.io/badge/Language-English%20%26%20Indonesian-00897B" alt="Language" />
+  </p>
+</div>
 
-- On-device plant disease detection using TensorFlow Lite models
-- Crop selection flow for tomato and rice
-- Camera capture and gallery import with image cropping
-- Detection result screen with confidence score, disease details, and treatment guidance
-- Detection history saved locally on the device
-- Article library and featured educational content
-- PDF export and share support for reports
-- Theme switching and bilingual experience for English and Indonesian
+## Overview
 
-## Tech Stack
+Plantify AI is a mobile app built with Flutter to help users identify plant diseases from leaf images. The app runs TensorFlow Lite models directly on-device, then presents a prediction with confidence score, disease explanation, treatment suggestions, and supporting references.
 
-- Flutter
-- Dart
-- Provider for state management
-- `camera` and `image_picker` for image acquisition
-- `image_cropper` and `image` for preprocessing
-- `tflite_flutter` for on-device inference
-- `shared_preferences` for local persistence
-- `pdf` and `share_plus` for report generation and sharing
-
-## Supported Detection Scope
-
-Current implementation is built around two crops:
+It currently focuses on two crops:
 
 - Tomato
 - Rice
 
-The app includes local model assets and disease metadata used to present:
+## Preview
 
-- Predicted disease label
-- Confidence score
-- Description and symptoms
-- Treatment and prevention suggestions
-- Reference links for additional reading
+<p align="center">
+  <img src="assets/images/rice_field.jpg" alt="Rice Field" width="31%" />
+  <img src="assets/images/fresh_tomatoes.jpg" alt="Fresh Tomatoes" width="31%" />
+  <img src="assets/images/tomato_pests.jpg" alt="Tomato Plant" width="31%" />
+</p>
+
+## Features
+
+| Feature | Description |
+| --- | --- |
+| AI disease detection | Runs local TensorFlow Lite models for image classification |
+| Crop-based flow | Lets users choose between tomato and rice before diagnosis |
+| Camera and gallery input | Supports direct capture or selecting an existing image |
+| Image cropping | Crops leaf photos before inference for better focus |
+| Rich result screen | Shows disease label, confidence, symptoms, and treatment guidance |
+| Detection history | Saves previous diagnoses locally on the device |
+| Article library | Includes educational content related to crops and plant care |
+| PDF export | Generates reports that can be shared externally |
+| Bilingual support | English and Indonesian language experience |
+| Theme support | Includes light and dark themes |
+
+## Tech Stack
+
+<p>
+  <img src="https://img.shields.io/badge/Flutter-Framework-02569B?logo=flutter&logoColor=white" alt="Flutter Framework" />
+  <img src="https://img.shields.io/badge/Dart-Language-0175C2?logo=dart&logoColor=white" alt="Dart Language" />
+  <img src="https://img.shields.io/badge/Provider-State%20Management-5C6BC0" alt="Provider" />
+  <img src="https://img.shields.io/badge/TFLite-ML%20Inference-FF6F00?logo=tensorflow&logoColor=white" alt="TFLite" />
+  <img src="https://img.shields.io/badge/Shared%20Preferences-Local%20Storage-7B1FA2" alt="Shared Preferences" />
+  <img src="https://img.shields.io/badge/PDF-Report%20Generation-D32F2F" alt="PDF" />
+  <img src="https://img.shields.io/badge/Share%20Plus-File%20Sharing-455A64" alt="Share Plus" />
+</p>
+
+Main packages used in this project:
+
+- `provider`
+- `camera`
+- `image_picker`
+- `image_cropper`
+- `image`
+- `tflite_flutter`
+- `shared_preferences`
+- `pdf`
+- `share_plus`
+- `toastification`
+
+## Detection Pipeline
+
+1. User selects a crop.
+2. User captures or imports a leaf image.
+3. The image is cropped and preprocessed.
+4. A TensorFlow Lite model is loaded from `assets/models/`.
+5. The app runs on-device inference.
+6. The result screen displays diagnosis details and treatment suggestions.
+7. The diagnosis can be saved into history or exported as a PDF report.
 
 ## Project Structure
 
@@ -56,27 +103,27 @@ assets/
 test/
 ```
 
-Key areas:
+Important modules:
 
-- `lib/screens/`: app flow such as onboarding, dashboard, camera, results, history, library, and settings
-- `lib/services/tflite_service.dart`: model loading and image classification
-- `lib/services/detection_history_service.dart`: local history management
-- `lib/services/pdf_service.dart`: PDF report generation
-- `lib/services/language_service.dart`: English and Indonesian language switching
-- `lib/models/detection_result.dart`: disease metadata and treatment content
+- `lib/screens/` contains the main app flow such as onboarding, dashboard, camera, result, history, library, and settings
+- `lib/services/tflite_service.dart` handles model loading and image classification
+- `lib/services/detection_history_service.dart` manages saved diagnosis history
+- `lib/services/pdf_service.dart` generates PDF reports
+- `lib/services/language_service.dart` manages English and Indonesian content
+- `lib/models/detection_result.dart` stores disease metadata, recommendations, and references
 
 ## Getting Started
 
 ### Prerequisites
 
-Make sure you have:
+Make sure the following tools are available:
 
-- Flutter SDK installed
-- Dart SDK included with Flutter
+- Flutter SDK
+- Dart SDK
 - Android Studio or VS Code
-- Android emulator, physical Android device, or another supported Flutter target
+- Emulator or physical device for testing
 
-Check your Flutter setup:
+Check your environment:
 
 ```bash
 flutter doctor
@@ -84,37 +131,26 @@ flutter doctor
 
 ### Installation
 
-Clone the repository and install dependencies:
-
 ```bash
 git clone https://github.com/Alifferdiansyah334/PlantifyAI.git
 cd PlantifyAI
 flutter pub get
 ```
 
-### Run the App
+### Run
 
 ```bash
 flutter run
 ```
 
-## Build
-
-Build an Android APK:
+## Build Commands
 
 ```bash
 flutter build apk
-```
-
-Build an Android App Bundle:
-
-```bash
 flutter build appbundle
 ```
 
 ## Testing
-
-Run tests with:
 
 ```bash
 flutter test
@@ -122,23 +158,23 @@ flutter test
 
 ## Notes
 
-- Model files are expected under `assets/models/`.
-- Camera permission is required for live image capture.
-- Detection runs on-device, so performance depends on the target device.
-- This project currently uses local/static disease and article data bundled in the app.
+- Model assets are expected under `assets/models/`
+- Camera permission is required for live image capture
+- Inference runs on-device, so performance depends on the target hardware
+- Disease descriptions and article content are currently bundled locally in the app
 
-## Roadmap Ideas
+## Future Improvements
 
-- Add more crop models and disease classes
-- Improve model evaluation documentation
-- Add offline-first sync for history and reports
-- Add screenshots and demo GIFs to this README
-- Add CI for formatting, analysis, and tests
+- Add actual app screenshots or device mockups
+- Expand support to more crops and disease classes
+- Document model training and evaluation results
+- Add CI for linting, testing, and release checks
+- Improve offline content synchronization
 
 ## Contributing
 
-Contributions are welcome through issues and pull requests. If you plan to make larger changes, open a discussion first so the scope stays aligned with the app direction.
+Issues and pull requests are welcome. For larger changes, open an issue first so the implementation direction is clear before work begins.
 
 ## License
 
-No license file is currently included in this repository. Add one if you want to define reuse terms explicitly.
+This repository does not currently include a license file. Add one if you want to define usage and distribution terms explicitly.
